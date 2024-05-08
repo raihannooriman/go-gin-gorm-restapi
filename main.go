@@ -2,19 +2,19 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/raihannooriman/go-gin-gorm-restapi/controllers/productController"
+	productcontroller "github.com/raihannooriman/go-gin-gorm-restapi/controllers/productController"
 	"github.com/raihannooriman/go-gin-gorm-restapi/models"
 )
 
 func main() {
-	r := gin.Default();
+	r := gin.Default()
 	models.ConnectDatabase()
 
-	r.GET("/api/products", productController.Index)
-	r.GET("/api/product/:id", productController.Show)
-	r.POST("/api/product", productController.Create)
-	r.PUT("/api/product/:id", productController.Update)
-	r.DELETE("/api/product", productController.Delete)
+	r.GET("/api/products", productcontroller.Index)
+	r.GET("/api/products/:id", productcontroller.Show)
+	r.POST("/api/products", productcontroller.Create)
+	r.PUT("/api/products/:id", productcontroller.Update)
+	r.DELETE("/api/products", productcontroller.Delete)
 
 	r.Run()
 }
